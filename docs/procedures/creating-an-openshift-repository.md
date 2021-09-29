@@ -18,7 +18,7 @@ For Red Hat representatives:
     request for the GCP CCM:
     ```
     Repository name: cloud-provider-gcp
-    Description: Kubernetes Cloud Controller Manager for Google Cloud Prlatform
+    Description: Kubernetes Cloud Controller Manager for Google Cloud Platform
     Programming Language (for .gitignore - optional): go
     License: Apache License 2.0
     Public repo: Public
