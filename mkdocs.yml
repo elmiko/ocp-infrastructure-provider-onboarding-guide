@@ -10,6 +10,8 @@ nav:
   - Preparation: 'preparation/index.md'
   - 'Information Gathering': 'information-gathering/index.md'
   - 'OpenShift Enhancement': 'openshift-enhancement/index.md'
+  - 'RHCOS': 'rhcos/index.md'
+  - 'Installer': 'installer/index.md'
   - 'Cloud Controller Manager': 'cloud-controller-manager/index.md'
   - 'Container Storage Interface Driver': 'container-storage-interface-driver/index.md'
   - 'Machine API Controllers': 'machine-api-controllers/index.md'
