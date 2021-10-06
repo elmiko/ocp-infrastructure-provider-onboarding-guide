@@ -25,6 +25,18 @@ within the list reference documents with greater detail for each step.
     become a part of the official
     [OpenShift enhancements](https://github.com/openshift/enhancements).
 
+1. [RHCOS](/rhcos)
+
+    Add support for the new platform to the Red Hat CoreOS Operating System.
+
+1. [Installer](/installer)
+
+    New platforms should add support the OpenShift Installer, which users
+    use to configure and build their OpenShift clusters. The Installer takes
+    configuration and cloud credentials, validates the information, and builds
+    the cloud infrastructure to create a cluster.
+
+
 1. [Cloud Controller Manager](/cloud-controller-manager)
 
     New providers must have a
