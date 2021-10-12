@@ -7,6 +7,7 @@ accomplish creating a new repository, a Red Hat representative will need to make
 Jira request on the internal `DPP Board`.
 
 For infrastructure implementors:
+
 1. Contact your Red Hat representative about creating a new repository.
 1. Have the name, description, and license information for the new repository
     ready to share.
@@ -14,15 +15,17 @@ For infrastructure implementors:
     let your contact know this at the beginning of the process.
 
 For Red Hat representatives:
+
 1. Create a new Jira Request on the `DPP Board`, the following is an example
-    request for the GCP CCM:
-    ```
-    Repository name: cloud-provider-gcp
-    Description: Kubernetes Cloud Controller Manager for Google Cloud Platform
-    Programming Language (for .gitignore - optional): go
-    License: Apache License 2.0
-    Public repo: Public
-    Who needs write access: OpenShift Team Cloud(https://github.com/orgs/openshift/teams/openshift-team-cloud)
-    Read access: Everybody
-    Additional info: Please fork https://github.com/kubernetes/cloud-provider-gcp there.
-    ```
+   request for the GCP CCM:
+
+```yaml
+Repository name: cloud-provider-gcp
+Description: Kubernetes Cloud Controller Manager for Google Cloud Platform
+Programming Language (for .gitignore - optional): go
+License: Apache License 2.0
+Public repo: Public
+Who needs write access: OpenShift Team Cloud(https://github.com/orgs/openshift/teams/openshift-team-cloud)
+Read access: Everybody
+Additional info: Please fork https://github.com/kubernetes/cloud-provider-gcp there.
+```
