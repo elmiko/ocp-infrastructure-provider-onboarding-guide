@@ -4,8 +4,11 @@
 
 #### Ensure the cloud provider implementation has support for load balancers
 
-If OpenShift should manage load balancers for this platform, provide load balancer
-integration in the [load balancer service][load-balancer-service]
+If OpenShift should manage load balancers for this platform, the cloud provider
+needs to implement [the `cloudprovider.LoadBalancer`
+interface][cloudprovider-LoadBalancer-interface].  Then the ingress operator
+needs to be updated to configure a [load balancer
+service][load-balancer-service] on this platform.
 
 For example:
 - add provider-specific annotations to `InternalLBAnnotations` and `managedLoadBalancerServiceAnnotations`
@@ -45,9 +48,10 @@ For example:
 
 #### Evaluate provider-specific DNS support and validate the controller
 
-Check if customizations are needed in the [DNS operator][dns-operator]
+Check if customizations are needed in [the ingress operator's DNS controller][dns-controller].
 
 For example:
+- define a new [DNS provider][dns-providers]
 - add your platform type to `createDNSProvider`, and `createDNSProviderIfNeeded`
 - add unit tests to catch regressions
 
@@ -63,8 +67,10 @@ It will support only these platforms in 4.10:
 
 Questions can be directed to the OpenShift Slack channel **#forum-network-edge**
 
+[cloudprovider-LoadBalancer-interface]: https://github.com/kubernetes/kubernetes/blob/4ce435cc95959c3cf24e3ecb38c14b7071f8ec58/staging/src/k8s.io/cloud-provider/cloud.go#L117-L162
 [load-balancer-service]: https://github.com/openshift/cluster-ingress-operator/blob/master/pkg/operator/controller/ingress/load_balancer_service.go
 [operator-tests]: https://github.com/openshift/cluster-ingress-operator/blob/master/test/e2e/operator_test.go
 [crd]: https://github.com/openshift/cluster-ingress-operator/blob/master/manifests/00-custom-resource-definition.yaml
 [ingress-controller-operator]: https://github.com/openshift/cluster-ingress-operator/blob/master/pkg/operator/controller/ingress/controller.go
-[dns-operator]: https://github.com/openshift/cluster-ingress-operator/blob/master/pkg/operator/controller/dns/controller.go
+[dns-controller]: https://github.com/openshift/cluster-ingress-operator/blob/master/pkg/operator/controller/dns/controller.go
+[dns-providers]: https://github.com/openshift/cluster-ingress-operator/tree/master/pkg/dns
