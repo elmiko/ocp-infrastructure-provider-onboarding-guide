@@ -16,16 +16,6 @@ For infrastructure implementors:
 
 For Red Hat representatives:
 
-1. Create a new Jira Request on the `DPP Board`, the following is an example
-   request for the GCP CCM:
+1. See this internal documentation, [How to Request a new OpenShift GitHub Repository][new-repo]
 
-```yaml
-Repository name: cloud-provider-gcp
-Description: Kubernetes Cloud Controller Manager for Google Cloud Platform
-Programming Language (for .gitignore - optional): go
-License: Apache License 2.0
-Public repo: Public
-Who needs write access: OpenShift Team Cloud(https://github.com/orgs/openshift/teams/openshift-team-cloud)
-Read access: Everybody
-Additional info: Please fork https://github.com/kubernetes/cloud-provider-gcp there.
-```
+[new-repo]: https://source.redhat.com/groups/public/atomicopenshift/atomicopenshift_wiki/how_to_request_a_new_openshift_github_repository

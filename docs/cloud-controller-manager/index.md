@@ -20,22 +20,10 @@ the official releases.
 
 ## Configure basic repository integrations
 
-After the repository is copied to the OpenShift organization, there are a few basic
-continuous integration tasks that should be configured. The most important of these
-initially are the job to permit automated merging through
-[Tide](https://github.com/kubernetes/test-infra/tree/master/prow/tide)
-and the job to create container images on commits.
-
-OpenShift uses [Prow](https://github.com/kubernetes/test-infra/tree/master/prow) for
-continuous integration testing much like the Kubernetes community does. The configurations
-are contained in the [openshift/release](https://github.com/openshift/release)
-repository. This is where pull requests will need to be made to enable integrations
-for the new CCM.
-
-For a deeper understanding of the OpenShift continuous integration tooling, the
-[OpenShift CI Docs](https://docs.ci.openshift.org/) are the authoritative source.
-In specific for this initial task, the
-[Bootstrapping Configuration for a new Repository](https://docs.ci.openshift.org/docs/how-tos/onboarding-a-new-component/#bootstrapping-configuration-for-a-new-repository) should be used as a guide.
+After setting up the code repository, there are several continuous integration
+tasks which must be done. This process is described in more detail in the
+[Configuring Basic Repository Integrations](../procedures/configuring-repository-integrations)
+document.
 
 As an example, here is the pull request to add the CCM for Alibaba Cloud to the
 OpenShift Prow. It configures the Tide mechanics as well as a pre-submit job to
