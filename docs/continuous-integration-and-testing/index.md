@@ -35,6 +35,8 @@ This Red Hat hosted cluster will need to be able to communicate with you so that
 
 ## Connecting with OpenShift CI
 
+In each of the sections below, the outbound links contain examples of the code changes and pull requests.
+
 ### Create Cluster Profile
 
 Creating your Cluster Profile for OpenShift's CI is a major stepping stone to running CI jobs. Details on how to do this can be found here: https://docs.ci.openshift.org/docs/how-tos/adding-a-cluster-profile/. Red Hat will work with you to complete each of the steps since they will require review and code merges into the OpenShift CI system.
