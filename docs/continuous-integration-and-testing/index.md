@@ -22,7 +22,7 @@ The requirements vary from provider to provider. For example, VMWare and AWS are
     - Gateways and/or bastions for possible user access
 - Sufficient storage for multiple OpenShift clusters.
 
-It is important to note that you will need to be able to run multiple OpenShift clusters at a time on your infrastructure. Why? Each code change related to your infrastructure provider will need to run unit and e2e tests. The e2e tests require an OpenShift cluster. Its very likely to have more than one code change in flight at a time so having the ability to run multiple OpenShift clusters is necessary to quickly provide the test results to the engineers.
+It is important to note that you will need to be able to run multiple OpenShift clusters at a time on your infrastructure. Why? Each code change related to your infrastructure provider will need to run unit and e2e tests. The e2e tests require an isolated OpenShift cluster so tests can run without interference. Its very likely to have more than one code change in flight at a time so having the ability to run multiple OpenShift clusters is necessary to quickly provide the test results to the engineers.
 
 In order to calculate your infrastructure size and costs, use this [OpenShift Minimum Hardware Requirements document.](https://docs.openshift.com/container-platform/4.9/installing/installing_bare_metal/installing-bare-metal.html#minimum-resource-requirements_installing-bare-metal)
 
