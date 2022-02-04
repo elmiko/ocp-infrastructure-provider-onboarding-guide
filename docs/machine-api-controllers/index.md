@@ -96,17 +96,23 @@ new Machines.
 
 While the MachineSet and Machine objects will not need to change to accomodate new infrastructure
 providers, the ProviderSpec will need to be created specifically for each new provider.  For example
-here are the ProviderSpecs for AWS and IBM Cloud:
+here are the ProviderSpecs for Alibaba Cloud and IBM Cloud:
 
-* [ProviderSpec defined for AWS][aws-providerspec]
+* [ProviderSpec defined for Alibaba Cloud][ali-providerspec]
 * [ProviderSpec defined for IBM Cloud][ibm-providerspec]
 
-In general, the ProviderSpec should be defined within the repository for the new infrastructure
-provider (akin to the IBM Cloud example). Although ProviderSpecs might be migrated into
-the [openshift/api][api-repo] to consilidate API types in the future, it is expected that
-new providers will begin by developing their ProviderSpec within the code repository for their
-actuator. Starting with the ProviderSpec in the same repository as the actuator will promote
-faster initial development.
+When creating a new ProviderSpec it is natural to begin development with the API type defined
+within the repository for the new component (akin to the IBM Cloud example). Before final
+release the ProviderSpec API code should be moved to the [openshift/api][api-repo] repository
+(similar to the Alibaba Cloud example). All new ProviderSpecs will be at API version `v1`.
+The rationale for adding these types to the API repository is that it makes it easier to
+re-vendor those API types into other projects, and it promotes a more thorough API review
+process. Keep in mind that when adding changes to the API repository, all dependent
+repositories (for example installer) will need to be re-vendored after the API changes have
+merged. The following pull request is an example of how to integrate a new ProviderSpec into the
+API repository:
+
+* [Machine API: adding Alibaba cloud provider types #1045][ali-api-pr]
 
 ### Machine Controllers and Actuators
 
@@ -246,7 +252,7 @@ noting that the Machine API is **not** API compatible with the current versions 
 [ms-template]: https://github.com/openshift/api/blob/release-4.10/machine/v1beta1/types_machineset.go#L52
 [machinespec]: https://github.com/openshift/api/blob/release-4.10/machine/v1beta1/types_machine.go#L163
 [providerspec]: https://github.com/openshift/api/blob/release-4.10/machine/v1beta1/types_machine.go#L186
-[aws-providerspec]: https://github.com/openshift/api/blob/master/machine/v1beta1/types_awsprovider.go
+[ali-providerspec]: https://github.com/openshift/api/blob/master/machine/v1/types_alibabaprovider.go
 [ibm-providerspec]: https://github.com/openshift/cluster-api-provider-ibmcloud/blob/release-4.10/pkg/apis/ibmcloudprovider/v1beta1/ibmcloudproviderconfig_types.go#L30
 [machine-controller]: https://github.com/openshift/machine-api-operator/blob/master/pkg/controller/machine/controller.go
 [controller-runtime]: https://github.com/kubernetes-sigs/controller-runtime
@@ -261,4 +267,5 @@ noting that the Machine API is **not** API compatible with the current versions 
 [ibm-mao-pr]: https://github.com/openshift/machine-api-operator/pull/871
 [api-repo]: https://github.com/openshift/api
 [k8s-dac]: https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/
-[mhc-docs]: ttps://docs.openshift.com/container-platform/latest/machine_management/deploying-machine-health-checks.html
+[mhc-docs]: https://docs.openshift.com/container-platform/latest/machine_management/deploying-machine-health-checks.html
+[ali-api-pr]: https://github.com/openshift/api/pull/1045
