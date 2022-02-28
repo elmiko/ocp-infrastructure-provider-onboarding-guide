@@ -36,6 +36,8 @@ Additionally, as a reference, you can review the [minimum hardware requirements]
 
 ## Development and Community
 
+- Do you have API documentation and libraries for your infrastructure? Are there code examples?
+- Is there a metadata service for your infrastructure? (e.g. `169.254.169.254`)
 - Are there any existing Kubernetes interface implementations? For example:
     - [Container Storage Interface (CSI)](https://kubernetes-csi.github.io/docs/)
     - [Container Networking Interface (CNI)](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)
