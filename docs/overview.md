@@ -65,6 +65,14 @@ within the list reference documents with greater detail for each step.
     [Cluster Ingress Operator](https://github.com/openshift/cluster-ingress-operator)
     for the new infrastructure provider.
 
+1. [Securing Access to Metadata Service](../networking-metadata-service)
+
+    Evaluate provider-specific support for metadata service.
+	If applicable, update the
+    [OpenShift SDN](https://github.com/openshift/sdn) and 
+	[OVN Kubernetes](https://github.com/openshift/ovn-kubernetes) CNI Plugins
+    for the new infrastructure provider.
+
 1. [Continuous Integration and Testing](../continuous-integration-and-testing)
 
     All components must have a suite of automation including unit style testing
