@@ -1,4 +1,13 @@
 # OCP Infrastructure Provider Onboarding Guide
+
+**ATTENTION**
+This repository has been archived in favor of the new canonical source, please address
+all future changes and issues to:
+
+**[openshift/infrastructure-provider-onboarding-guide](https://github.com/openshift/infrastructure-provider-onboarding-guide)**
+
+----
+
 A guide on how to bring a new infrastructure provider to OpenShift Container Platform.
 
 The documentation in this repository is organized to use the
