@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Container Storage Interface Driver - OpenShift Infrastructure Provider Onboarding Guide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Container Storage Interface Driver";
+    var mkdocs_page_input_path = "container-storage-interface-driver/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OpenShift Infrastructure Provider Onboarding Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../preparation/">Preparation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../information-gathering/">Information Gathering</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../openshift-enhancement/">OpenShift Enhancement</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rhcos/">RHCOS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installer/">Installer</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud-controller-manager/">Cloud Controller Manager</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Container Storage Interface Driver</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#goal">Goal</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#installation-workflow">Installation workflow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#upgrade">Upgrade</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cluster-un-installation">Cluster Un-installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clustercsidriver">ClusterCSIDriver</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#openshiftlibrary-go">openshift/library-go</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#csi-sidecars">CSI sidecars</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#credentials">Credentials</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#metrics">Metrics</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ci">CI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deliverables">Deliverables</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#csi-driver">CSI driver</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#openshiftapi-changes">openshift/api changes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#csi-driver-operator">CSI driver operator</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#csi-driver-deployment">CSI driver deployment</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#ci_1">CI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cluster-storage-operator">cluster-storage-operator</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#csi-driver-operator-deployment">CSI driver operator deployment</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#development">Development</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#cso">CSO</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#csi-driver-operator_1">CSI driver operator</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../machine-api-controllers/">Machine API Controllers</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../network-ingress-dns/">Network Ingress and DNS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../continuous-integration-and-testing/">Continuous Integration</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../component-infrastructure/">Component Infrastructure</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../red-hat-relationship/">Red Hat Relationship</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release/">Release</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OpenShift Infrastructure Provider Onboarding Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Container Storage Interface Driver</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="container-storage-interface-driver">Container Storage Interface Driver</h1>
+<h2 id="goal">Goal</h2>
+<p>In the end, OpenShift installation should provide a cluster that is usable out of the box. Users can create PVCs or StatefulSets and get a decent storage for them.</p>
+<ul>
+<li>Install one CSI driver, the most useful for the platform. Usually it’s one that provides block volumes (AWS EBS, GCP PD, Azure Disk, OpenStack Cinder, ...).</li>
+<li>Provide <em>one</em> default StorageClass that is good for a generic usage. Not too expensive, but not too slow either.</li>
+<li>Each cluster is different, don’t anticipate application needs, leave creation of additional StorageClasses to the cluster administrators. They know better what they need.</li>
+<li>If the platform provides more storage backends, provide CSI drivers for them via OLM. This is out of scope of this guide, but library-go can be used for it too, see <a href="https://github.com/openshift/aws-efs-csi-driver-operator">AWS EFS CSI driver operator</a>. It even supports un-installation of the CSI driver.</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<h3 id="installation-workflow">Installation workflow</h3>
+<p>Using GCP cloud and its Persistent Disk (PD) CSI driver as an example, but it works exactly the same on other platforms.
+During cluster installation, following things happen:</p>
+<ul>
+<li><code>cluster-version-operator</code> (CVO) starts <a href="https://github.com/openshift/cluster-storage-operator"><code>cluster-storage-operator</code></a> (CSO) in namespace <code>openshift-cluster-storage-operator</code>. CVO does it by blindly applying YAML files in <a href="https://github.com/openshift/cluster-storage-operator/tree/master/manifests"><code>manifest/</code></a> directory of the operator image.</li>
+<li>Notice that manifests in <code>cluster-storage-operator</code> image will have the correct references to all images of all CSI drivers, CSI driver operators, CSI sidecars and so on. We have an <a href="">automation</a> that replaces <a href="https://github.com/openshift/cluster-storage-operator/blob/f8eda8eeaba9ec2f275431e95555fa05a8c6fa81/manifests/10_deployment.yaml#L57-L124">the image names from <code>quay.io/openshift</code></a> to <code>registry.redhat.io</code> during release build. The operator gets them as env. variables.</li>
+<li><code>cluster-storage-operator</code> sees that it runs on platform GCP and starts the <a href="https://github.com/openshift/gcp-pd-csi-driver-operator">GCP PD CSI driver operator</a> in namespace <code>openshift-cluster-csi-drivers</code> and creates <code>ClusterCSIDriver</code> CR for it.</li>
+<li><code>cluster-storage-operator</code> passes the correct images that the CSI driver operator should use as <a href="https://github.com/openshift/cluster-storage-operator/blob/f8eda8eeaba9ec2f275431e95555fa05a8c6fa81/assets/csidriveroperators/gcp-pd/07_deployment.yaml#L24-L39">env. variables of the operator Deployment</a>.</li>
+<li>GCP PD CSI driver operator observes its <code>ClusterCSIDriver</code> CR and installs GCP PD CSI driver. The operator reports the status of the installation to the <code>ClusterCSIDriver</code> CR status.</li>
+<li>GCP PD CSI driver operator gets all images that it should use for the driver + sidecars as env. vars.</li>
+<li><code>cluster-storage-operator</code> observes <code>ClusterCSIDriver</code> CR status and reports its status to <code>cluster-version-operator</code> using <a href="https://github.com/openshift/enhancements/blob/master/dev-guide/cluster-version-operator/dev/clusteroperator.md">ClusterOperator</a> CR.</li>
+<li><code>cluster-version-operator</code> reports installation/upgrade status to <code>ClusterVersion</code> CR.</li>
+</ul>
+<h3 id="upgrade">Upgrade</h3>
+<p>Upgrade works in exactly the same way as installation, except that <code>cluster-storage-operator</code>, CSI driver operator and the CSI driver are updated, i.e. their <code>Deployment</code> / <code>DaemonSets</code> are updated instead of created. Updated image names are propagated exactly as during the installation - as env. variables from CVO through CSO to CSI driver operator(s).</p>
+<h3 id="cluster-un-installation">Cluster Un-installation</h3>
+<p>Nothing is needed from the driver or its operator during cluster un-installation. However,
+<code>openshift-install destroy cluster</code> itself should destroy all volumes that were dynamically provisioned in the cluster. In other words:</p>
+<ol>
+<li>The CSI driver must tag / label all volumes created during the cluster lifetime with the cluster ID. Most CSI drivers have a special argument to add tags to all created volumes. Their CSI driver operator can file it easily. See <a href="https://github.com/openshift/gcp-pd-csi-driver-operator/blob/223a251c3ba39d8af605258d14794b32a5cfafda/assets/controller.yaml#L51">GCP PD CSI driver operator that sets tag (=label in GCP jargon) <code>kubernetes-io-cluster-${CLUSTER_ID}=owned</code></a>.</li>
+<li><code>openshift-install destroy cluster</code> must list all volumes that are tagged with the cluster ID and delete them. See <a href="https://github.com/openshift/installer/blob/3f318d7049d5f4b6f98211b4b899fdb43b1f3542/pkg/destroy/gcp/disk.go#L86">code for GCP PD</a>.</li>
+</ol>
+<h3 id="clustercsidriver"><code>ClusterCSIDriver</code></h3>
+<p><code>ClusterCSIDriver</code> is a <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource</a>. Its CRD is created during cluster installation. Each CSI driver operator uses its own dedicated CR name. For example, GCP PD CSI driver operator uses ClusterCSIDriver instance named <a href="https://github.com/openshift/cluster-storage-operator/blob/master/assets/csidriveroperators/gcp-pd/08_cr.yaml"><code>pd.csi.storage.gke.io</code></a>. See <a href="https://github.com/openshift/api/blob/b632c5fc10c0ea86cb18577db9388109a43d465f/operator/v1/types_csi_cluster_driver.go#L26">openshift/api repository</a> for details about the available fields in the CR and for allowed CSI drivers.</p>
+<p>The ClusterCSIDriver is heavily based on <a href="https://github.com/openshift/enhancements/blob/master/dev-guide/cluster-version-operator/dev/clusteroperator.md">ClusterOperator CR</a> - it has the same <a href="https://github.com/openshift/api/blob/b632c5fc10c0ea86cb18577db9388109a43d465f/operator/v1/types.go#L51"><code>Spec</code></a> and <a href="https://github.com/openshift/api/blob/b632c5fc10c0ea86cb18577db9388109a43d465f/operator/v1/types.go#L109"><code>Status</code></a>.</p>
+<p><code>ClusterCSIDriver</code> does not provide any configuration of the operator nor the driver except for log level, both of <a href="https://github.com/openshift/api/blob/b632c5fc10c0ea86cb18577db9388109a43d465f/operator/v1/types.go#L71">the operator</a> and its <a href="https://github.com/openshift/api/blob/b632c5fc10c0ea86cb18577db9388109a43d465f/operator/v1/types.go#L62">operand</a> (=the CSI driver). A CSI driver operator should install the CSI driver with some default parameters that suit the best in OpenShift. If the operator needs it, it can get parameters from install-config or other OCP components by getting corresponding API objects - most of the cluster is up and running at the time CSI driver operator starts.</p>
+<p>Using <a href="https://github.com/openshift/api/blob/b632c5fc10c0ea86cb18577db9388109a43d465f/operator/v1/types.go#L109"><code>ClusterCSIDriver.Status</code></a> the CSI driver operator reports status of the CSI driver "up the chain", to <code>cluster-storage-operator</code>. Especially see <a href="https://github.com/openshift/api/blob/b632c5fc10c0ea86cb18577db9388109a43d465f/operator/v1/types.go#L116"><code>ClusterCSIDriver.Status.Conditions</code></a>, they're directly transferred by <code>cluster-storage-operator</code> to overall status of storage in <code>ClusterOperator</code> CR.</p>
+<h3 id="openshiftlibrary-go"><code>openshift/library-go</code></h3>
+<p><a href="https://github.com/openshift/library-go/"><code>openshift/library-go</code></a> is a collection of functions that allow us to build OpenShift operators easily. Most of the functionality of a CSI driver operator is already available there.</p>
+<p>In the ideal case, a CSI driver operator just provides yaml files of the CSI driver (<code>Deployment</code>, <code>DaemonSet</code>, <code>ServiceAccount</code>, <code>Role</code>, <code>ClusterRole</code>, <code>RoleBindings</code>, <code>ClusterRoleBindings</code>, ...) and initializes + starts library-go Controllers that handle the rest.</p>
+<p>There is already a lot of internal OpenShift knowledge in these controllers, for example:
+* Inject cluster-wide HTTP proxy to driver pods.
+* Inject custom CA bundles to the driver pods.
+* Put the controller Pods to the master nodes (if they’re available).
+* Scale down nr. of controller Pods on single-node cluster.
+* Configure leader-election of the CSI sidecar appropriately for the platform.
+* (Optionally) restart CSI driver pods when cloud credentials change, so the CSI driver does not need to reload the credentials on its own.
+* Replace image name placeholders with the current images for an OCP release.
+* Propagate log level changes.
+* Create a default storage class.
+* "Stomp" over any user changes in the driver <code>Deployment</code> / <code>DaemonSets</code> - the operator knows better how to run the CSI driver.
+* Report its status correctly via <code>ClusterCSIDriver.Status.Conditions</code>.
+* Etc.</p>
+<h3 id="csi-sidecars">CSI sidecars</h3>
+<p>OpenShift already ships CSI sidecars, usually with the version that corresponds to the Kubernetes version in each OCP release. These sidecars MUST be used by the CSI driver. A CSI driver operator gets their image names (SHAs) as env. variables.</p>
+<h3 id="credentials">Credentials</h3>
+<p>The CSI driver should be able to consume <code>Secrets</code> provided by the <code>cloud-credentials-operator</code> (CCO). Technically it’s possible that a CSI driver operator translates the Secrets from CCO to a format understood by the CSI driver, but you save some sweat and tears if you avoid doing so.</p>
+<p><code>CredentialsRequest</code> for the CSI driver must be present in <code>cluster-storage-operator</code> <a href="https://github.com/openshift/cluster-storage-operator/tree/master/manifests"><code>manifests/</code> directory</a>, to be available during cluster installation and/or extraction of <code>CredentialRequests</code> during installation.</p>
+<h3 id="metrics">Metrics</h3>
+<p>In OpenShift, we provide metrics through HTTPS. Since most CSI driver and all CSI sidecars expose metrics as HTTP endpoints, we add <code>kube-rbac-proxy</code> containers to the driver Pods. They provide a proxy that listens on Pod's public IP address and proxy HTTPS requests from Prometheus to HTTP metric endpoints of the driver / sidecar. The HTTP endpoint is available only on loopback and it's not exposed outside of the driver Pod.</p>
+<p>If possible, make the CSI driver working without metrics and add them later. They’re tricky to set up correctly. In general, follow GCP PD CSI driver operator example how the metric ports are exposed in the Pods and how their scraping is configured in <a href="https://github.com/openshift/gcp-pd-csi-driver-operator/blob/master/assets/servicemonitor.yaml">ServiceMonitor CR</a>.</p>
+<p>OpenShift shall handle TLS side of things, i.e. it will provide <a href="https://github.com/openshift/gcp-pd-csi-driver-operator/blob/223a251c3ba39d8af605258d14794b32a5cfafda/assets/service.yaml#L5">a Secret with TLS key</a> that can be used in <a href="https://github.com/openshift/gcp-pd-csi-driver-operator/blob/223a251c3ba39d8af605258d14794b32a5cfafda/assets/controller.yaml#L114-L115"><code>kube-rbac-proxy</code> sidecars</a> using <a href="https://github.com/openshift/gcp-pd-csi-driver-operator/blob/223a251c3ba39d8af605258d14794b32a5cfafda/assets/controller.yaml#L127-L129">Secret volumes</a>. </p>
+<h3 id="ci">CI</h3>
+<p>If you do not do so yet, test your CSI driver in vanilla Kubernetes frequently using <a href="https://github.com/kubernetes/kubernetes/tree/master/test/e2e/storage/external">Kubernetes storage tests</a>. Neither OpenShift or an operator is needed here and all your Kubernetes customers will benefit from it.</p>
+<p>OpenShift packages the same tests as openshift-test binary / <a href="https://quay.io/repository/openshift/origin-tests">container image</a>. The binary just wraps the tests with proper OpenShift privileges, but otherwise they're the same tests as upstream and consume the same <code>manifest.yaml</code> file. To run the tests:</p>
+<ol>
+<li>Place <code>manifest.yaml</code> and <code>kubeconfig</code> in a single directory, e.g.  <code>data/</code></li>
+<li>Run <code>openshift-tests</code> from <code>quay.io/repository/openshift/origin-tests</code> image:
+    <code>$ podman run -v `pwd`:/data:z --rm -it quay.io/repository/openshift/origin-tests:latest sh -c "KUBECONFIG=/data/kubeconfig TEST_CSI_DRIVER_FILES=/data/manifest.yaml /usr/bin/openshift-tests run openshift/csi --junit-dir /data/results"</code></li>
+</ol>
+<p>In the end, a CI job will run the same tests. CI for a CSI driver is tricky to set up and probably should be done by Red Hat.</p>
+<h2 id="deliverables">Deliverables</h2>
+<h3 id="csi-driver">CSI driver</h3>
+<p>Fork the CSI driver under <code>github.com/openshift</code> and integrate it with Prow and Tide as described <a href="../procedures">elsewhere in this guide</a>.</p>
+<p>Make sure that the CSI driver image is built in Red Hat's CI.</p>
+<h3 id="openshiftapi-changes">openshift/api changes</h3>
+<p>Add your CSI driver name to allowed <code>ClusterCSIDriver</code> names <a href="https://github.com/openshift/api/blob/b632c5fc10c0ea86cb18577db9388109a43d465f/operator/v1/types_csi_cluster_driver.go#L44-L57">here</a> and <a href="https://github.com/openshift/api/blob/master/operator/v1/0000_90_cluster_csi_driver_01_config.crd.yaml-patch">here</a>. You must update <code>cluster-storage-operator</code> to the new <code>openshift/api</code> version to get the <code>ClusterCSIDriver</code> CRD updated during cluster installation / update. A simple <code>go get -u github.com/openshift/api@master</code> is enough.</p>
+<h3 id="csi-driver-operator">CSI driver operator</h3>
+<p>The CSI driver must be installed via an operator and the operator must be based on library-go. As listed above, it has a lot of knowledge about OpenShift. <strong>You cannot use an operator previously developed in-house and using OLM!</strong></p>
+<ul>
+<li>Ask your Red Hat representative to create a new empty repo in <code>gihub.com/openshift</code>. Take <a href="https://github.com/openshift/gcp-pd-csi-driver-operator">the GCP PD CSI driver operator</a> as a base and copy it there. Replace traces of "GCP PD" and "gcp-pd" in the whole repo with your CSI driver name. If you're lucky, you may be done!</li>
+<li>The only useful code is in <a href="https://github.com/openshift/gcp-pd-csi-driver-operator/blob/master/pkg/operator/starter.go"><code>pkg/operator/starter.go</code></a> and it basically only instantiates + starts CSI driver controllers from library-go.</li>
+<li>The most important thing is the <a href="https://github.com/openshift/gcp-pd-csi-driver-operator/tree/master/assets"><code>assets/</code> directory</a>. It contains YAML files of all objects that the CSI driver needs.</li>
+<li>Check <code>${}</code> "variables" in the files there - the operator will replace e.g. <code>${LOG_LEVEL}</code> with <code>"2"</code>, <code>${DRIVER_IMAGE}</code> with the driver image name etc.</li>
+<li>Check <code>kube-rbac-proxy</code> containers and how they provide HTTPS endpoints for metrics of each CSI sidecar.</li>
+</ul>
+<h4 id="csi-driver-deployment">CSI driver deployment</h4>
+<p>As result, the operator must deploy the CSI driver this way:</p>
+<ul>
+<li>The CSI driver runs in namespace <code>openshift-cluster-csi-drivers</code>.</li>
+<li>OpenShift can be deployed by various tools and in different modes.</li>
+<li>The most typical mode is a cluster with 3 dedicated master and a number of worker nodes. In this mode a CSI driver runs as:<ul>
+<li><code>Deployment</code> with 2 replicas of CSI controler Pods (driver + external-provisioner,  external-attacher, external-resizer, external snapshotter, livenessprobe and nr. of kube-rbac-proxies). These pods run on master nodes and have anti-affinity towards each other (i.e. run on different master nodes).</li>
+<li><code>DaemonSet</code> that matches all nodes (incl. masters) with the driver + node-driver-registrar + livenessprobe.</li>
+<li>The DaemonSet has <a href="https://github.com/openshift/gcp-pd-csi-driver-operator/blob/223a251c3ba39d8af605258d14794b32a5cfafda/assets/node.yaml#L13-L16"><code>Rolling</code> update strategy</a> + tolerates 10% of missing pods (to be able to update 10% of pods at the same time, speeding up updates of large clusters).</li>
+<li>All containers (both in the <code>DaemonSet</code> and <code>Deployment</code>) have <a href="https://github.com/openshift/gcp-pd-csi-driver-operator/blob/223a251c3ba39d8af605258d14794b32a5cfafda/assets/node.yaml#L73-L76">CPU and memory requests filed</a></li>
+</ul>
+</li>
+<li>In a single-node cluster, the <code>Deployment</code> with the controller pods has 1 replica.</li>
+<li>In a cluster without dedicated master nodes, the <code>Deployment</code> has no node selector.</li>
+</ul>
+<p>Most of the above is automatically configured and managed by our common library-go code!</p>
+<h4 id="ci_1">CI</h4>
+<p>The operator repository must contain a yaml manifest for e2e tests in [<code>test/e2e</code> directory] ((https://github.com/openshift/gcp-pd-csi-driver-operator/tree/master/test/e2e) and <a href="https://github.com/openshift/gcp-pd-csi-driver-operator/blob/master/Dockerfile.test">Dockerfile.test</a> for it. In our CI we can distribute "stuff" like the test manifest only as a container images, hence we build a container with the manifest in CI. <code>FROM: src</code> will then use the same image as we built for the driver sources, as checked out from github.</p>
+<h3 id="cluster-storage-operator">cluster-storage-operator</h3>
+<ul>
+<li>Add <code>CredentialsRequest</code> for the CSI driver to `manifest/ directory of CSO](https://github.com/openshift/cluster-storage-operator/tree/master/manifests). Follow existing examples there.</li>
+<li>Add complete assets of the CSI driver <strong>operator</strong> to <a href="https://github.com/openshift/cluster-storage-operator/tree/master/assets/csidriveroperators"><code>assets/csidriveroperators/&lt;platform&gt;</code></a>. It must contain all RBACs that the operator needs (incl. those that the operator will grant to the driver and all CSI sidecars!), <code>ServiceAccount</code> and <code>Deployment</code> of the CSI driver operator. Check <a href="https://github.com/openshift/cluster-storage-operator/tree/master/assets/csidriveroperators/gcp-pd">GCE PD</a> as an example.</li>
+<li>Teach CSO how / when to start the CSI driver operator via a little glue code.</li>
+<li>Write <a href="https://github.com/openshift/cluster-storage-operator/blob/master/pkg/operator/csidriveroperator/csioperatorclient/gcp-pd.go"><code>Get&lt;driver name&gt;OperatorConfig()</code></a>, that returns a structure describing how to start the operator.<ul>
+<li><a href="https://github.com/openshift/cluster-storage-operator/blob/f8eda8eeaba9ec2f275431e95555fa05a8c6fa81/pkg/operator/csidriveroperator/csioperatorclient/gcp-pd.go#L18-L19">Replacement strings</a> for ${OPERATOR_IMAGE} and ${DRIVER_IMAGE} in the operator Deployment.</li>
+<li><a href="https://github.com/openshift/cluster-storage-operator/blob/f8eda8eeaba9ec2f275431e95555fa05a8c6fa81/pkg/operator/csidriveroperator/csioperatorclient/gcp-pd.go#L25">Platform</a>, on which the operator should start.</li>
+<li><a href="https://github.com/openshift/cluster-storage-operator/blob/f8eda8eeaba9ec2f275431e95555fa05a8c6fa81/pkg/operator/csidriveroperator/csioperatorclient/gcp-pd.go#L26-L31">What static assets</a> to create when the operator should run.</li>
+<li><a href="https://github.com/openshift/cluster-storage-operator/blob/f8eda8eeaba9ec2f275431e95555fa05a8c6fa81/pkg/operator/csidriveroperator/csioperatorclient/gcp-pd.go#L34">Deployment</a> asset.</li>
+<li><a href="https://github.com/openshift/cluster-storage-operator/blob/f8eda8eeaba9ec2f275431e95555fa05a8c6fa81/pkg/operator/csidriveroperator/csioperatorclient/gcp-pd.go#L34">ClusterCSIDriver CR</a> to create.</li>
+</ul>
+</li>
+<li>Initialize <a href="https://github.com/openshift/cluster-storage-operator/blob/f8eda8eeaba9ec2f275431e95555fa05a8c6fa81/pkg/operator/starter.go#L132-L145">list of supported CSI driver operators</a> at the operator startup.</li>
+</ul>
+<p>CSO will then handle the rest - if the platform where OCP runs corresponds to the platform that the CSI driver operator declared, CSO will start the operator + <code>ClusterCSIDriver</code> CR.</p>
+<h4 id="csi-driver-operator-deployment">CSI driver operator deployment</h4>
+<p>CSO must deploy the CSI driver operator as a <code>Deployment</code> with 1 replica that runs on the master nodes, if they’re available.</p>
+<h2 id="development">Development</h2>
+<ul>
+<li>It’s possible to start the CSI driver operator on the command line, see <a href="https://github.com/openshift/gcp-pd-csi-driver-operator">GCP PD example</a>.</li>
+<li>It’s possible to start the cluster-storage-operator on the command line. It's currently not documented, but provide <a href="https://github.com/openshift/cluster-storage-operator/blob/f8eda8eeaba9ec2f275431e95555fa05a8c6fa81/manifests/10_deployment.yaml#L53-L124">expected env. variables</a> + start the operator in the same way as the GCP PD CSI driver operator above.</li>
+</ul>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>Both the driver + CSI driver operator API objects and logs will be available in must-gather collected by <code>oc adm must-gater</code> out of the box, no need to configure anything.</p>
+<h4 id="cso">CSO</h4>
+<ul>
+<li>CSO reports its status in ClusterOperator CR</li>
+<li><code>oc get clusteroperator storage</code></li>
+<li><code>oc get clusteroperator storage -o yaml</code></li>
+<li>In addition, CSO reports more detailed status in Storage CR<ul>
+<li><code>oc get storage -o yaml</code></li>
+<li>Especially check its conditions.</li>
+</ul>
+</li>
+<li>You can bump CSO log level in the Storage CR</li>
+<li><code>oc edit storage</code><ul>
+<li>Note that the <code>logLevel</code> <strong>does not</strong> propagate to CSI driver operators!</li>
+</ul>
+</li>
+<li>You can "pause" the operator by setting <code>managementLevel: Unmanaged</code>.</li>
+<li>For example to test manual changes to the CSI driver operator <code>Deployment</code>. Otherwise, the operator will overwrite any of your changes.</li>
+</ul>
+<h4 id="csi-driver-operator_1">CSI driver operator</h4>
+<ul>
+<li>The driver operator reports its status in <code>ClusterCSIDriver</code> CR</li>
+<li><code>oc get clustercsidriver -o yaml</code></li>
+<li>You can bump CSO log level in the ClusterCSIDriver CR</li>
+<li><code>oc edit clustercsidriver</code><ul>
+<li>Note that <code>logLevel</code> <strong>does</strong> propagate to the CSI driver!</li>
+</ul>
+</li>
+<li>You can "pause" the operator by setting <code>managementLevel: Unmanaged</code>. For example to test manual changes to the driver <code>Deployment</code> / <code>DaemonSet</code>. Otherwise, the operator will overwrite any of your changes.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../machine-api-controllers/" class="btn btn-neutral float-right" title="Machine API Controllers">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../cloud-controller-manager/" class="btn btn-neutral" title="Cloud Controller Manager"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cloud-controller-manager/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../machine-api-controllers/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

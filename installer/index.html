@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Installer - OpenShift Infrastructure Provider Onboarding Guide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Installer";
+    var mkdocs_page_input_path = "installer/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OpenShift Infrastructure Provider Onboarding Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../preparation/">Preparation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../information-gathering/">Information Gathering</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../openshift-enhancement/">OpenShift Enhancement</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rhcos/">RHCOS</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Installer</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pkgtypes">pkg/types</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pkgassets">pkg/assets:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#terraform-integration">Terraform Integration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#terraform-configs">Terraform Configs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#destroy">Destroy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud-controller-manager/">Cloud Controller Manager</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../container-storage-interface-driver/">Container Storage Interface Driver</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../machine-api-controllers/">Machine API Controllers</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../network-ingress-dns/">Network Ingress and DNS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../continuous-integration-and-testing/">Continuous Integration</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../component-infrastructure/">Component Infrastructure</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../red-hat-relationship/">Red Hat Relationship</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release/">Release</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OpenShift Infrastructure Provider Onboarding Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Installer</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="installer">Installer</h1>
+<p>The <a href="https://www.github.com/openshift/installer">OpenShift Installer repo</a> contains the code for the <code>openshift-install</code> Go binary as well as templates and documentation
+for user-provisioned infrastructure. <code>openshift-install</code> provides a user interface for the installation process on multiple cloud platforms.
+Users provide install configuration through an <a href="https://github.com/openshift/installer/blob/master/docs/user/customization.md"><code>install-config.yaml</code></a> file, which can be created interactively through the
+<code>openshift-install create install-config</code> command. The installer uses this configuration to create Kubernetes manifests and ignition configs
+for the virtual machines. In the case of installer-provisioned infrastructure, <code>openshift-install</code> uses Terraform to create the infrastructure
+for the cluster. For user-provisioned infrastructure, <a href="https://github.com/openshift/installer/tree/master/upi">cloud-specific templates</a> such as CloudFormation for AWS or ARM for Azure, are provided.</p>
+<p>For a more detailed overview of the Installer, please read the <a href="https://github.com/openshift/installer/blob/master/docs/user/overview.md">Installer Overview</a>. For an overview of the general architecture
+of a cluster see the <a href="https://docs.openshift.com/container-platform/4.8/architecture/architecture-installation.html">Architecture section of the official docs</a>.</p>
+<p>For contributing to the Installer, please read the <a href="https://github.com/openshift/installer/blob/master/CONTRIBUTING.md">Contributor Guidelines</a>. In particular, please note the guidelines regarding
+commit messages. Code contributions should be grouped into logically organized commits with clear commit messages. OWNERS files should be added in platform specific subdirectories.</p>
+<p>We recommend committing code to the Installer in the following order:</p>
+<h2 id="pkgtypes">pkg/types</h2>
+<p>The <code>types</code> package is the API for the Installer. As such, it should not contain any external dependencies so that the package can be cleanly
+vendored to other repos.</p>
+<ul>
+<li><a href="https://github.com/openshift/installer/commit/590dc0c62d432d4d3ea1ca40aa84ba6f17bee780#diff-5dc50083bb8d12ad7439e48e73af24cc866f5fb59322144805cba65a8abdefc7">Adding Alibaba Platform</a></li>
+<li><a href="https://github.com/openshift/installer/blob/master/docs/dev/explain.md"><code>openshift-install explain</code> command</a>]</li>
+</ul>
+<h2 id="pkgassets">pkg/assets:</h2>
+<p>For the design behind assets in the installer, see <a href="https://github.com/openshift/installer/blob/master/docs/design/assetgeneration.md">the Asset Generation doc</a>. A suggested approach for adding assets
+would be:</p>
+<ol>
+<li><code>pkg/assets/installconfig</code></li>
+<li><code>pkg/assets/manifests</code></li>
+<li>
+<p><code>pkg/assets/machines</code></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/installer/pull/5333/commits/0577ab9ff94b2688645186674ec0eec0c8b5c190">Adding Alibaba Assets</a>.</p>
+</li>
+</ol>
+<h2 id="terraform-integration">Terraform Integration</h2>
+<p>Integrate the Terraform provider by adding the plugin.</p>
+<ul>
+<li><a href="https://github.com/openshift/installer/pull/5333/commits/e99ecc6bf902542b207cd76274ec6f861279ab0e">Adding Stages and Terraform Variables for Alibaba</a>.</li>
+</ul>
+<h2 id="terraform-configs">Terraform Configs</h2>
+<p>Create the Terraform configurations at <code>/data/data/{platform}</code>.</p>
+<ul>
+<li><a href="https://github.com/openshift/installer/pull/5333/commits/75ca60ff2483379d29fe6b78064783ccbd4ee6db">Alibaba Terraform Configuration</a>.</li>
+</ul>
+<h2 id="destroy">Destroy</h2>
+<p>Add code to remove all resources created by the Installer and the cluster. The Installer
+should loop until all known resources are destroyed.</p>
+<ul>
+<li><a href="https://github.com/openshift/installer/commit/0ef6c1367a42978059665be13e82a08ea74a7f37#diff-80f8e210f9e17a175682591d811168a5779aed19b3dee41f280014f2c2040127">Alibaba Destroy Code</a></li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<p>Add in-repo documentation, ideally following the general format of other platforms.</p>
+<ul>
+<li><a href="https://github.com/openshift/installer/tree/master/docs/user/aws">AWS docs</a>.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cloud-controller-manager/" class="btn btn-neutral float-right" title="Cloud Controller Manager">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../rhcos/" class="btn btn-neutral" title="RHCOS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../rhcos/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cloud-controller-manager/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

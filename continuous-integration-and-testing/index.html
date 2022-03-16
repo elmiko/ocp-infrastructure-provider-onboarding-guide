@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Continuous Integration - OpenShift Infrastructure Provider Onboarding Guide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Continuous Integration";
+    var mkdocs_page_input_path = "continuous-integration-and-testing/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OpenShift Infrastructure Provider Onboarding Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../preparation/">Preparation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../information-gathering/">Information Gathering</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../openshift-enhancement/">OpenShift Enhancement</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rhcos/">RHCOS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installer/">Installer</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud-controller-manager/">Cloud Controller Manager</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../container-storage-interface-driver/">Container Storage Interface Driver</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../machine-api-controllers/">Machine API Controllers</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../network-ingress-dns/">Network Ingress and DNS</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Continuous Integration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#your-infrastructure">Your Infrastructure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#red-hats-infrastructure">Red Hat's Infrastructure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#connecting-with-openshift-ci">Connecting with OpenShift CI</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#create-cluster-profile">Create Cluster Profile</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#adding-to-ci-step-registry">Adding to CI Step Registry</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../component-infrastructure/">Component Infrastructure</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../red-hat-relationship/">Red Hat Relationship</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release/">Release</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OpenShift Infrastructure Provider Onboarding Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Continuous Integration</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="continuous-integration-and-testing">Continuous Integration and Testing</h1>
+<p>Continuous Integration (CI) testing for OpenShift and its supported infrastructure providers is handled through Prow; the same system used for the Kubernetes project. The landing page for OpenShift's CI can be found <a href="https://docs.ci.openshift.org">here</a>, but we'll add some context for you as a newly supported OpenShift infrastructure provider.</p>
+<p>Some of the CI components will be hosted by you and some hosted by Red Hat. We'll start by looking at what you should have.</p>
+<h2 id="your-infrastructure">Your Infrastructure</h2>
+<p>You, as the infrastructure provider, will supply infrastructure where test OpenShift clusters will be installed and end-to-end (e2e) tests will be executed.</p>
+<p><img alt="" src="installing-openshift-on-infra.png" /></p>
+<p>The requirements vary from provider to provider. For example, VMWare and AWS are hosted very differently (on-premise vs hosted) so each one has caveats. But, there are some common requirements. </p>
+<ul>
+<li>API endpoint[s] for your service. <ul>
+<li>i.e. What does your CLI or terraform communicate with to provision infrastructure?</li>
+</ul>
+</li>
+<li>User accounts with required permissions for OpenShift installation.<ul>
+<li>i.e. Can you share credentials that Red Hat can use to provision in your infrastructure?</li>
+</ul>
+</li>
+<li>Ability to run multiple OpenShift clusters.<ul>
+<li>i.e. Do you have enough resources to run multiple OpenShift clusters? More on this below. </li>
+</ul>
+</li>
+<li>Network infrastructure including:<ul>
+<li>DHCP</li>
+<li>Load balancing (Layer 4)</li>
+<li>Gateways and/or bastions for possible user access</li>
+</ul>
+</li>
+<li>Sufficient storage for multiple OpenShift clusters.</li>
+</ul>
+<p>It is important to note that you will need to be able to run multiple OpenShift clusters at a time on your infrastructure. Why? Each code change related to your infrastructure provider will need to run unit and e2e tests. The e2e tests require an isolated OpenShift cluster so tests can run without interference. Its very likely to have more than one code change in flight at a time so having the ability to run multiple OpenShift clusters is necessary to quickly provide the test results to the engineers.</p>
+<p><img alt="" src="running-ci-jobs-on-infra.png" /></p>
+<p>In order to calculate your infrastructure size and costs, use this <a href="https://docs.openshift.com/container-platform/4.9/installing/installing_bare_metal/installing-bare-metal.html#minimum-resource-requirements_installing-bare-metal">OpenShift Minimum Hardware Requirements document.</a></p>
+<h2 id="red-hats-infrastructure">Red Hat's Infrastructure</h2>
+<p>Red Hat will host a cluster where Prow Jobs are run. These Prow Jobs will execute many steps which include infrastructure setup, provisioning a cluster on your infrastructure, running tests, and deprovisioning. The steps are a part of a chain and workflow (see <a href="https://docs.ci.openshift.org/docs/architecture/step-registry/">here</a>).</p>
+<p>This Red Hat hosted cluster will need to be able to communicate with you so that it can run these steps, so some account and networking setup may be necessary.</p>
+<h2 id="connecting-with-openshift-ci">Connecting with OpenShift CI</h2>
+<p>In each of the sections below, the outbound links contain examples of the code changes and pull requests.</p>
+<h3 id="create-cluster-profile">Create Cluster Profile</h3>
+<p>Creating your Cluster Profile for OpenShift's CI is a major stepping stone to running CI jobs. Details on how to do this can be found here: https://docs.ci.openshift.org/docs/how-tos/adding-a-cluster-profile/. Red Hat will work with you to complete each of the steps since they will require review and code merges into the OpenShift CI system.</p>
+<p>Note that in the <a href="https://docs.ci.openshift.org/docs/how-tos/adding-a-cluster-profile/#providing-credentials">Providing Credentials</a> step, you should work with Red Hat on how to access the Vault used for OpenShift CI. </p>
+<h3 id="adding-to-ci-step-registry">Adding to CI Step Registry</h3>
+<p>OpenShift CI jobs are composed of multiple workflows and steps. You will need to add these to complete the integration with OpenShift CI. Documentation on creating workflows and steps can be found <a href="https://docs.ci.openshift.org/docs/architecture/step-registry/">here</a>. The registry of steps can be found <a href="https://github.com/openshift/release/tree/master/ci-operator/step-registry">here</a>. Finally, an auto-generated document of all existing workflows, chains, and steps can be found <a href="https://steps.ci.openshift.org/">here</a> and is a great reference. </p>
+<p>Make sure that you have steps for each method of installation. For example, CI steps for UPI, IPI, disconnected network installations, or any other types. </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../component-infrastructure/" class="btn btn-neutral float-right" title="Component Infrastructure">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../network-ingress-dns/" class="btn btn-neutral" title="Network Ingress and DNS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../network-ingress-dns/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../component-infrastructure/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

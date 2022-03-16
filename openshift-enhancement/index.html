@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>OpenShift Enhancement - OpenShift Infrastructure Provider Onboarding Guide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "OpenShift Enhancement";
+    var mkdocs_page_input_path = "openshift-enhancement/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OpenShift Infrastructure Provider Onboarding Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../preparation/">Preparation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../information-gathering/">Information Gathering</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">OpenShift Enhancement</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#writing-the-enhancement">Writing the enhancement</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rhcos/">RHCOS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installer/">Installer</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud-controller-manager/">Cloud Controller Manager</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../container-storage-interface-driver/">Container Storage Interface Driver</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../machine-api-controllers/">Machine API Controllers</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../network-ingress-dns/">Network Ingress and DNS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../continuous-integration-and-testing/">Continuous Integration</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../component-infrastructure/">Component Infrastructure</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../red-hat-relationship/">Red Hat Relationship</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release/">Release</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OpenShift Infrastructure Provider Onboarding Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>OpenShift Enhancement</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="openshift-enhancement">OpenShift Enhancement</h1>
+<p>Inspired by the Kubernetes community enhancement process, OpenShift also uses
+enhancements to drive and define its features. Early in the process of adding a
+new infrastructure provider to OpenShift, an enhancement document should be
+created to scope the work that is being done and to expose design details which
+might need modification on OpenShift.</p>
+<p>To begin, visit the <a href="https://github.com/openshift/enhancements">OpenShift enhancements</a>
+repository and become familiar with the
+<a href="https://github.com/openshift/enhancements/blob/master/guidelines/enhancement_template.md">enhancement template</a>
+as well as the <a href="https://github.com/openshift/enhancements/tree/master/guidelines">enhancement guidelines</a>.
+When ready, create a pull request with your new infrastructure provider enhancement
+to the repository. To aid in this process, here are two examples of pull requests
+for recently added platforms:</p>
+<ul>
+<li>
+<p><a href="https://github.com/openshift/enhancements/pull/707">Alibaba Cloud platform enhancement pull request</a></p>
+</li>
+<li>
+<p><a href="https://github.com/openshift/enhancements/pull/773">IBM Cloud platform enhancement pull request</a></p>
+</li>
+</ul>
+<h2 id="writing-the-enhancement">Writing the enhancement</h2>
+<p>The <a href="https://github.com/openshift/enhancements/blob/master/guidelines/enhancement_template.md">enhancement template</a>
+should guide you in organizing the text of your enhancement. But, it has been designed
+primarily for feature and code changes to OpenShift, so there are a few topics you
+should consider specifically while writing.</p>
+<p>What will an OpenShift cluster look like on the new infrastructure provider?
+(Adding a topology diagram can be very helpful to explain the logical architecture.)</p>
+<p>Are there special networking considerations that need to be explained
+(e.g. DNS and load balancing strategies)?</p>
+<p>What types of compute and storage are available on the infrastructure?</p>
+<p>How will users install and consume OpenShift on the infrastructure?</p>
+<p>The "Drawbacks" and "Alternatives" sections in the enhancement do not always make
+sense for new infrastructure providers. Depending on the options available for
+deploying OpenShift on the infrastructure, the "Alternatives" section can be a good
+place to talk about other methods of deployment.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../rhcos/" class="btn btn-neutral float-right" title="RHCOS">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../information-gathering/" class="btn btn-neutral" title="Information Gathering"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../information-gathering/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../rhcos/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

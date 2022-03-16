@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Information Gathering - OpenShift Infrastructure Provider Onboarding Guide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Information Gathering";
+    var mkdocs_page_input_path = "information-gathering/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OpenShift Infrastructure Provider Onboarding Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../preparation/">Preparation</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Information Gathering</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#compute">Compute</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#storage">Storage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#networking">Networking</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#security">Security</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#development-and-community">Development and Community</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../openshift-enhancement/">OpenShift Enhancement</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rhcos/">RHCOS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installer/">Installer</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud-controller-manager/">Cloud Controller Manager</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../container-storage-interface-driver/">Container Storage Interface Driver</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../machine-api-controllers/">Machine API Controllers</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../network-ingress-dns/">Network Ingress and DNS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../continuous-integration-and-testing/">Continuous Integration</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../component-infrastructure/">Component Infrastructure</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../red-hat-relationship/">Red Hat Relationship</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release/">Release</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OpenShift Infrastructure Provider Onboarding Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Information Gathering</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="information-gathering">Information Gathering</h1>
+<p>The following items will be needed to move forward smoothly in the onboarding process. Use the questions below to build an inventory of your existing capabilities or gaps. Red Hat will review these to help estimate the amount of work. </p>
+<h2 id="compute">Compute</h2>
+<ul>
+<li>Do you have a list and documentation of pre-configured instance types (e.g. <code>m4.2xlarge</code>) or are machines configured another way? </li>
+<li>What are the supported processor architectures and what do you wish to use with OpenShift?</li>
+<li>Do you have multiple instance types (e.g. compute, graphics, HPC, etc)? </li>
+<li>Can you organize machines into zones, regions, or other types of groups?</li>
+</ul>
+<p>Additionally, as a reference, you can review the <a href="https://docs.openshift.com/container-platform/latest/installing/installing_bare_metal/installing-bare-metal.html#installation-minimum-resource-requirements_installing-bare-metal">minimum hardware requirements</a> for OpenShift.</p>
+<h2 id="storage">Storage</h2>
+<ul>
+<li>What types of storage do you offer (e.g. block, object, filesystem, fast, budget, etc)?</li>
+<li>Do you have any storage performance benchmarks you can share? </li>
+<li>Do you support features like snapshots and disk expansion?</li>
+</ul>
+<h2 id="networking">Networking</h2>
+<ul>
+<li>Do you have a native load balancing solution? If so, does it meet the <a href="https://docs.openshift.com/container-platform/latest/installing/installing_bare_metal/installing-bare-metal.html#installation-load-balancing-user-infra_installing-bare-metal">requirements for OpenShift</a>?</li>
+<li>Do you have a IP Address Management solution? (e.g. DHCP and DNS)?<ul>
+<li>Do you support static IP assignment via DHCP? </li>
+</ul>
+</li>
+<li>Will you be able to support each of the <a href="https://docs.openshift.com/container-platform/latest/installing/installing_bare_metal/installing-bare-metal.html#installation-dns-user-infra_installing-bare-metal">DNS record types used by OpenShift</a>?</li>
+<li>Do you have features like VPC, subnets, and firewalls?</li>
+<li>Do you have disconnected, offline, or restricted network capabilities?</li>
+</ul>
+<h2 id="security">Security</h2>
+<ul>
+<li>Do you have an IDM or Authentication solution? If so, what standard does it follow (e.g. OAuth, OpenID, etc)?</li>
+<li>Does you have role based access controls (RBAC) available or another authorization solution?</li>
+<li>Do you have hardware security module (HSM) support?</li>
+</ul>
+<h2 id="development-and-community">Development and Community</h2>
+<ul>
+<li>Do you have API documentation and libraries for your infrastructure? Are there code examples?</li>
+<li>Is there a metadata service for your infrastructure? (e.g. <code>169.254.169.254</code>)</li>
+<li>Are there any existing Kubernetes interface implementations? For example:<ul>
+<li><a href="https://kubernetes-csi.github.io/docs/">Container Storage Interface (CSI)</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/">Container Networking Interface (CNI)</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/developing-cloud-controller-manager/">Cloud Controller Manager (CCM)</a></li>
+<li><a href="https://cluster-api.sigs.k8s.io/introduction.html">Cluster API (CAPI) Provider</a></li>
+</ul>
+</li>
+<li>The OpenShift installer relies on Terraform to provision resources. Do you have a Terraform provider?</li>
+<li>Do you have support for <a href="https://docs.fedoraproject.org/en-US/fedora-coreos/platforms/">Fedora CoreOS</a>, <a href="https://coreos.github.io/ignition/">Ignition</a>, and <a href="https://coreos.github.io/afterburn/">Afterburn</a>?</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../openshift-enhancement/" class="btn btn-neutral float-right" title="OpenShift Enhancement">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../preparation/" class="btn btn-neutral" title="Preparation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../preparation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../openshift-enhancement/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

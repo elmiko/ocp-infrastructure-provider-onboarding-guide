@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Overview - OpenShift Infrastructure Provider Onboarding Guide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Overview";
+    var mkdocs_page_input_path = "overview.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OpenShift Infrastructure Provider Onboarding Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Overview</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../preparation/">Preparation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../information-gathering/">Information Gathering</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../openshift-enhancement/">OpenShift Enhancement</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rhcos/">RHCOS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installer/">Installer</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud-controller-manager/">Cloud Controller Manager</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../container-storage-interface-driver/">Container Storage Interface Driver</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../machine-api-controllers/">Machine API Controllers</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../network-ingress-dns/">Network Ingress and DNS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../continuous-integration-and-testing/">Continuous Integration</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../component-infrastructure/">Component Infrastructure</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../red-hat-relationship/">Red Hat Relationship</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release/">Release</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OpenShift Infrastructure Provider Onboarding Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Overview</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="overview">Overview</h1>
+<p>This document provides a high level view of the workflow for adding a new
+infrastructure provider to OpenShift. The following list is meant to give
+a general idea of the work involved with this process, the links contained
+within the list reference documents with greater detail for each step.</p>
+<h2 id="workflow">Workflow</h2>
+<ol>
+<li>
+<p><a href="../preparation">Preparation</a></p>
+<p>Start with an idea to add a new infrastructure provider to OpenShift.
+Identify contacts within Red Hat, and the community, and then set
+expectations about the process ahead.</p>
+</li>
+<li>
+<p><a href="../information-gathering">Information Gathering</a></p>
+<p>Define the reference architecture and toplogy for OpenShift clusters
+on the new provider. Inventory existing components including licenses
+and plugin providers, and identify supported formats and infrastructure.</p>
+</li>
+<li>
+<p><a href="../openshift-enhancement">OpenShift Enhancement</a></p>
+<p>Create an enhancment describing the new platform in detail, this will
+become a part of the official
+<a href="https://github.com/openshift/enhancements">OpenShift enhancements</a>.</p>
+</li>
+<li>
+<p><a href="../rhcos">RHCOS</a></p>
+<p>Add support for the new platform to the Red Hat CoreOS Operating System.</p>
+</li>
+<li>
+<p><a href="../installer">Installer</a></p>
+<p>New platforms should add support the OpenShift Installer, which users
+use to configure and build their OpenShift clusters. The Installer takes
+configuration and cloud credentials, validates the information, and builds
+the cloud infrastructure to create a cluster.</p>
+</li>
+<li>
+<p><a href="../cloud-controller-manager">Cloud Controller Manager</a></p>
+<p>New providers must have a
+<a href="https://kubernetes.io/docs/concepts/architecture/cloud-controller/">Cloud Controller Manager</a>
+integrated into OpenShift, including a repository in the OpenShift
+organization and container images included in the release payload.</p>
+</li>
+<li>
+<p><a href="../container-storage-interface-driver">Container Storage Interface Driver</a></p>
+<p>Providers that expose storage options must have a CSI driver integrated into
+OpenShift, including a repository in the OpenShift organization and container
+images inclujded in the release payload.</p>
+</li>
+<li>
+<p><a href="../machine-api-controllers">Machine API Controllers</a></p>
+<p>New providers must have a Machine actuator, and related controllers, for
+the <a href="https://github.com/openshift/machine-api-operator">Machine API Operator</a>,
+including a repository in the OpenShift organization and container images
+included in the release payload.</p>
+</li>
+<li>
+<p><a href="../network-ingress-dns">Network Ingress and DNS</a></p>
+<p>Evaluate provider-specific support for ingress load balancers and endpoint
+publishing strategies, as well as internal and external DNS support.
+Update and validate the
+<a href="https://github.com/openshift/cluster-ingress-operator">Cluster Ingress Operator</a>
+for the new infrastructure provider.</p>
+</li>
+<li>
+<p><a href="../continuous-integration-and-testing">Continuous Integration and Testing</a></p>
+<p>All components must have a suite of automation including unit style testing
+(run in isolation), and integration testing (run on cluster from the
+provider). This automation is part of the OpenShift development and release
+process, and exists within the OpenShift organization.</p>
+</li>
+<li>
+<p><a href="../component-infrastructure">Component Infrastructure</a></p>
+<p>Once OpenShift can be installed and operated on the new infrastructure
+platform attention should be given to the dynamic infrastructure services.
+These components are non-critical to the installation process and include
+things like the image registry.</p>
+</li>
+<li>
+<p><a href="../documentation">Documentation</a></p>
+<p>Product documentation is required for installation and maintenance tasks
+on the new infrastructure platform. Source level documentation is expected
+for all component repositories added to the OpenShift organization.</p>
+</li>
+<li>
+<p><a href="../red-hat-relationship">Red Hat Relationship</a></p>
+<p>After the new infrastructure provider is ready for release, what are the
+commitments around maintenance and future releases.</p>
+</li>
+<li>
+<p><a href="../release">Release</a></p>
+<p>What to do once the code is approved and the release is ready for public
+consumption. How to promote and advertise, and work with Red Hat.</p>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../preparation/" class="btn btn-neutral float-right" title="Preparation">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Welcome"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../preparation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

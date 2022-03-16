@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Release - OpenShift Infrastructure Provider Onboarding Guide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Release";
+    var mkdocs_page_input_path = "release/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OpenShift Infrastructure Provider Onboarding Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../preparation/">Preparation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../information-gathering/">Information Gathering</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../openshift-enhancement/">OpenShift Enhancement</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rhcos/">RHCOS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installer/">Installer</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud-controller-manager/">Cloud Controller Manager</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../container-storage-interface-driver/">Container Storage Interface Driver</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../machine-api-controllers/">Machine API Controllers</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../network-ingress-dns/">Network Ingress and DNS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../continuous-integration-and-testing/">Continuous Integration</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../component-infrastructure/">Component Infrastructure</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../red-hat-relationship/">Red Hat Relationship</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Release</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#z-stream-releases">Z-Stream Releases</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#integrating-with-the-release-process">Integrating with the Release Process</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#feature-development">Feature Development</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#feature-freeze">Feature Freeze</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#code-freeze">Code Freeze</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#general-availability">General Availability</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#release-life-cycle">Release Life Cycle</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OpenShift Infrastructure Provider Onboarding Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Release</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="release">Release</h1>
+<p>Red Hat releases new minor versions of OpenShift Container Platform approximately
+once every 4 months. OpenShift versions use a <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>
+style of denotation to designate specific versions. For example, version "4.8.1"
+of OpenShift would designate that the major version is "4", the minor version
+is "8", and the patch level is "1". OpenShift is currently releasing along the
+major version "4" series. When the next version of OpenShift is released, it will be
+"4.n+1", where "n" is the current minor version. For example, at the time of writing
+the current version of OpenShift is "4.9", the next release will then be "4.10".</p>
+<h2 id="z-stream-releases">Z-Stream Releases</h2>
+<p>While new minor versions of OpenShift are released every 4 months, "Z-Stream" releases
+are created much more frequently to address security and critical bug fixes.
+A z-stream release is designated by an increase in the patch level version of the
+release. For example, version "4.8.1" of OpenShift would designate that the current
+patch level is "1", if a new z-stream release is needed it will be version "4.8.2".</p>
+<p>In general, backports to older versions of OpenShift will be evaluated on a case-by-case
+basis. Security and critical bug fixes will be considered the highest priority
+for backporting. Features are not backported without a justified exception from Red Hat.</p>
+<h2 id="integrating-with-the-release-process">Integrating with the Release Process</h2>
+<p>For any minor version of OpenShift the release process consists of several important
+phases which are traversed in this manner:</p>
+<p>Feature Development -&gt; Feature Freeze -&gt; Code Freeze -&gt; General Availability</p>
+<h3 id="feature-development">Feature Development</h3>
+<p>The feature development phase is a time when any change can be proposed to the
+code repositories. There are no automated limitations on the pull requests that
+can be proposed, and any work related to new features can be considered for inclusion.
+Ideally, the bulk of new work will be created during this phase of development.</p>
+<h3 id="feature-freeze">Feature Freeze</h3>
+<p>Feature freeze is an important concept to understand when integrating with the
+Red Hat release process. During the development of a new version of
+OpenShift there will come a time when new feature work will be disallowed
+into the code base. This process is referred to as "feature freeze" and it is used
+to create a hard deadline for adding new features to a release. As new
+infrastructure platforms are considered features, new components and changes
+should be in place before the feature freeze.</p>
+<p>Approximately 12 weeks before the general availability release for an OpenShift
+version, the engineering team will observe the feature freeze. After the feature
+freeze date, new pull requests will require a related bugzilla issue in order to
+be considered for merging. This is not a mechanism for bringing features in though,
+and should only be used to fix bugs within the existing code.</p>
+<p>What this means is that new infrastructure providers should work to ensure
+their provider specific components have been created and included in continuous
+integration before the feature freeze. There will still be time to fix bugs,
+but the major pieces should be in place (e.g. repositories created, continuous
+integration configured, image builds automated).</p>
+<h3 id="code-freeze">Code Freeze</h3>
+<p>Approximately 6 weeks after feature freeze the OpenShift engineering team will
+observe a "code freeze". The code freeze indicates that no more pull requests
+will be taken from the source repositories, and that the release teams will
+now take over the process of performing the final testing and analysis, and
+packaging of release artifacts.</p>
+<p>During the time between the feature freeze and the code freeze, new pull
+requests will be accepted provided they have a related bugzilla issue. After
+code freeze these changes will not be considered or accepted unless they are
+release blocking issues.</p>
+<h3 id="general-availability">General Availability</h3>
+<p>Once the source base that was compiled during the code freeze has been fully
+tested and vetted by the Red Hat release teams, the new OpenShift Container
+Platform version will be released for general availability. This process is
+usually predicted to occur 6 weeks after the code freeze, but given the
+possibility of release blocking bugs this is only an approximation.</p>
+<p>If you have followed the instructions in this guide then your new components
+will be ready for inclusion with the next OpenShift minor release. The final
+piece necessary for being included in an OpenShift release from Red Hat are
+full end-to-end integration of your infrastructure platform into the continuous
+integration process (this is covered in greater detail in
+<a href="../continuous-integration-and-testing">Continuous Integration and Testing</a>).</p>
+<p>When the end-to-end integration tests of the new infrastructure platform are passing
+regularly, the new platform can be included in an OpenShift release. The new
+components will have already been included in nightly and continuous integration
+payloads, and they will now be promoted to the release payload.</p>
+<h2 id="release-life-cycle">Release Life Cycle</h2>
+<p>After release, Red Hat provides a support and maintenance life cycle for the
+version of OpenShift Container Platform depending on the release type and
+version number. For more information about this process and the dates
+associated with extended support, please see the
+<a href="https://access.redhat.com/support/policy/updates/openshift/">Red Hat OpenShift Container Platform Life Cycle Policy</a>
+document.</p>
+<p>For some historical context around the release schedule and how Red Hat
+has arrived at this process, please see the following articles:</p>
+<ul>
+<li><a href="https://cloud.redhat.com/blog/time-is-on-your-side-a-change-to-the-openshift-4-lifecycle">Time Is On Your Side: A Change to the OpenShift 4 Lifecycle</a></li>
+<li><a href="https://cloud.redhat.com/blog/the-ultimate-guide-to-openshift-release-and-upgrade-process-for-cluster-administrators">The Ultimate Guide to OpenShift Release and Upgrade Process for Cluster Administrators</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../red-hat-relationship/" class="btn btn-neutral" title="Red Hat Relationship"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../red-hat-relationship/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Network Ingress and DNS - OpenShift Infrastructure Provider Onboarding Guide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Network Ingress and DNS";
+    var mkdocs_page_input_path = "network-ingress-dns/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OpenShift Infrastructure Provider Onboarding Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../preparation/">Preparation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../information-gathering/">Information Gathering</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../openshift-enhancement/">OpenShift Enhancement</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rhcos/">RHCOS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installer/">Installer</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud-controller-manager/">Cloud Controller Manager</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../container-storage-interface-driver/">Container Storage Interface Driver</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../machine-api-controllers/">Machine API Controllers</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Network Ingress and DNS</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#network-ingress">Network Ingress</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ensure-the-cloud-provider-implementation-has-support-for-load-balancers">Ensure the cloud provider implementation has support for load balancers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#evaluate-ingress-provider-specific-support-for-load-balancers">Evaluate ingress provider-specific support for load balancers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#evaluate-provider-specific-endpoint-publishing-strategy">Evaluate provider-specific endpoint publishing strategy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#document-the-default-endpoint-publishing-strategy-for-the-provider">Document the default endpoint publishing strategy for the provider</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dns">DNS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#evaluate-provider-specific-dns-support-and-validate-the-controller">Evaluate provider-specific DNS support and validate the controller</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#evaluate-provider-specific-externaldns-support-410">Evaluate provider-specific externalDNS support (4.10+)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#questions">Questions</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../continuous-integration-and-testing/">Continuous Integration</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../component-infrastructure/">Component Infrastructure</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../red-hat-relationship/">Red Hat Relationship</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release/">Release</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OpenShift Infrastructure Provider Onboarding Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Network Ingress and DNS</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="network-ingress-and-dns">Network Ingress and DNS</h1>
+<h3 id="network-ingress">Network Ingress</h3>
+<h4 id="ensure-the-cloud-provider-implementation-has-support-for-load-balancers">Ensure the cloud provider implementation has support for load balancers</h4>
+<p>If OpenShift should manage load balancers for this platform, the cloud provider
+needs to implement <a href="https://github.com/kubernetes/kubernetes/blob/4ce435cc95959c3cf24e3ecb38c14b7071f8ec58/staging/src/k8s.io/cloud-provider/cloud.go#L117-L162">the <code>cloudprovider.LoadBalancer</code>
+interface</a>.  Then the ingress operator
+needs to be updated to configure a <a href="https://github.com/openshift/cluster-ingress-operator/blob/master/pkg/operator/controller/ingress/load_balancer_service.go">load balancer
+service</a> on this platform.</p>
+<p>For example:
+- add provider-specific annotations to <code>InternalLBAnnotations</code> and <code>managedLoadBalancerServiceAnnotations</code>
+- evaluate customizations needed for load balancer service configuration in <code>desiredLoadBalancerService</code>
+- add unit tests to catch regressions</p>
+<h4 id="evaluate-ingress-provider-specific-support-for-load-balancers">Evaluate ingress provider-specific support for load balancers</h4>
+<p>Review the end-to-end tests in the <a href="https://github.com/openshift/cluster-ingress-operator/blob/master/test/e2e/operator_test.go">operator tests</a>
+and make customizations, or skip the tests for this provider if they don't apply.</p>
+<p>For example:
+- see <code>TestProxyProtocolOnAWS</code> for an example for the AWS cloud provider 
+- check if you require <code>TestInternalLoadBalancer</code>, <code>TestIngressControllerCustomEndpoints</code>, <code>TestLocalWithFallbackOverrideForLoadBalancerService</code> for your platform
+- add unit tests to catch regressions</p>
+<h4 id="evaluate-provider-specific-endpoint-publishing-strategy">Evaluate provider-specific endpoint publishing strategy</h4>
+<p>Look through the doc at the <a href="https://github.com/openshift/cluster-ingress-operator/blob/master/manifests/00-custom-resource-definition.yaml">custom resource definition</a>
+to understand the details for <code>endpointPublishingStrategy</code>, which is the set of parameters
+used to publish the ingress controller endpoints to other networks, enable load
+balancer integrations, and other tasks.</p>
+<p>Understand the properties:
+- hostNetwork, loadBalancerService, nodePortService, private</p>
+<p>Check if customizations are needed in the <a href="https://github.com/openshift/cluster-ingress-operator/blob/master/pkg/operator/controller/ingress/controller.go">ingress controller operator</a></p>
+<p>For example: 
+- add your default strategy to <code>setDefaultPublishingStrategy</code>
+- add your integration for <code>IsProxyProtocolNeeded</code>
+- add unit tests to catch regressions</p>
+<h4 id="document-the-default-endpoint-publishing-strategy-for-the-provider">Document the default endpoint publishing strategy for the provider</h4>
+<h3 id="dns">DNS</h3>
+<h4 id="evaluate-provider-specific-dns-support-and-validate-the-controller">Evaluate provider-specific DNS support and validate the controller</h4>
+<p>Check if customizations are needed in <a href="https://github.com/openshift/cluster-ingress-operator/blob/master/pkg/operator/controller/dns/controller.go">the ingress operator's DNS controller</a>.</p>
+<p>For example:
+- define a new <a href="https://github.com/openshift/cluster-ingress-operator/tree/master/pkg/dns">DNS provider</a>
+- add your platform type to <code>createDNSProvider</code>, and <code>createDNSProviderIfNeeded</code>
+- add unit tests to catch regressions</p>
+<h4 id="evaluate-provider-specific-externaldns-support-410">Evaluate provider-specific externalDNS support (4.10+)</h4>
+<p>Starting in OpenShift 4.10, there is the External-DNS operator to consider.
+It will support only these platforms in 4.10:
+- AWS
+- GCP
+- Azure</p>
+<h4 id="questions">Questions</h4>
+<p>Questions can be directed to the OpenShift Slack channel <strong>#forum-network-edge</strong></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../continuous-integration-and-testing/" class="btn btn-neutral float-right" title="Continuous Integration">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../machine-api-controllers/" class="btn btn-neutral" title="Machine API Controllers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../machine-api-controllers/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../continuous-integration-and-testing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

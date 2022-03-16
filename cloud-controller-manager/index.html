@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Cloud Controller Manager - OpenShift Infrastructure Provider Onboarding Guide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Cloud Controller Manager";
+    var mkdocs_page_input_path = "cloud-controller-manager/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OpenShift Infrastructure Provider Onboarding Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../preparation/">Preparation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../information-gathering/">Information Gathering</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../openshift-enhancement/">OpenShift Enhancement</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rhcos/">RHCOS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installer/">Installer</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Cloud Controller Manager</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#add-the-ccm-repository-to-openshift">Add the CCM repository to OpenShift</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configure-basic-repository-integrations">Configure basic repository integrations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#integrating-with-other-openshift-components">Integrating with other OpenShift components</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#openshiftapi">openshift/api</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#openshiftlibrary-go">openshift/library-go</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#openshiftcluster-cloud-controller-manager-operator">openshift/cluster-cloud-controller-manager-operator</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../container-storage-interface-driver/">Container Storage Interface Driver</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../machine-api-controllers/">Machine API Controllers</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../network-ingress-dns/">Network Ingress and DNS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../continuous-integration-and-testing/">Continuous Integration</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../component-infrastructure/">Component Infrastructure</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../red-hat-relationship/">Red Hat Relationship</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release/">Release</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OpenShift Infrastructure Provider Onboarding Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Cloud Controller Manager</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="cloud-controller-manager">Cloud Controller Manager</h1>
+<p>This document describes the necessary changes that must be made to add a new
+<a href="https://kubernetes.io/docs/concepts/architecture/cloud-controller/">Cloud Controller Manager (CCM)</a>
+to OpenShift. It does not cover the details of writing a CCM, for information
+about implementing the controller please see the official Kubernetes documentation
+on <a href="https://kubernetes.io/docs/tasks/administer-cluster/developing-cloud-controller-manager/">Developing Cloud Controller Manager</a>
+as a starting point.</p>
+<h2 id="add-the-ccm-repository-to-openshift">Add the CCM repository to OpenShift</h2>
+<p>One of the first things to do is copy the source code into the OpenShift organization
+on GitHub. This process is described in more detail in the
+<a href="../procedures/creating-an-openshift-repository">Creating a GitHub Repository in the OpenShift Organization</a>
+document.</p>
+<p>Having the source code in the OpenShift organization will allow Red Hat's continuous
+integration tooling access to it for running tests, building images, and including in
+the official releases.</p>
+<h2 id="configure-basic-repository-integrations">Configure basic repository integrations</h2>
+<p>After setting up the code repository, there are several continuous integration
+tasks which must be done. This process is described in more detail in the
+<a href="../procedures/configuring-repository-integrations">Configuring Basic Repository Integrations</a>
+document.</p>
+<p>As an example, here is the pull request to add the CCM for Alibaba Cloud to the
+OpenShift Prow. It configures the Tide mechanics as well as a pre-submit job to
+check the Go language formatting and a post-submit job to build the container images.</p>
+<ul>
+<li><a href="https://github.com/openshift/release/pull/19947">openshift/release #19947</a></li>
+</ul>
+<h2 id="integrating-with-other-openshift-components">Integrating with other OpenShift components</h2>
+<p>In OpenShift there are several operators which work together to ensure that the CCM
+is properly configured and also that new nodes which join the cluster are similarly
+configured for the infrastructure provider. To ensure that the new CCM and provider
+are properly recognized by all components there are several repositories which must
+be modified.</p>
+<h3 id="openshiftapi">openshift/api</h3>
+<p>Before progressing with the OpenShift integrations, the new infrastructure provider
+will need to be present in the OpenShift API as part of the <code>infrastructure.config.openshift.io</code>
+definition.</p>
+<p><em><strong>TODO: add link to installer doc step that describes updating openshift/api</strong></em></p>
+<h3 id="openshiftlibrary-go">openshift/library-go</h3>
+<p>In order for the new infrastructure provider to be recognized by the Cluster
+Cloud Controller Manager Operator, and other operators, the
+<a href="https://github.com/openshift/library-go">OpenShift library-go project</a> must be updated
+so that the <code>IsCloudProviderExternal</code> function returns the proper response.</p>
+<p>As an example, here is the pull request to update the <code>IsCloudProviderExternal</code> function
+to add support for IBM Cloud.</p>
+<ul>
+<li><a href="https://github.com/openshift/library-go/pull/1161">openshift/library-go #1161</a></li>
+</ul>
+<p>It is important to note that any changes to library-go must be vendored into the projects
+which are dependent upon library-go. This process can often involve several repositories
+that must be updated before all the components will work together. To make tracking
+these changes easier, an issue can be used to monitor the individual changes. For example,
+this is an issue which tracked changes for the GCP and vSphere updates:</p>
+<ul>
+<li><a href="https://github.com/openshift/cluster-cloud-controller-manager-operator/issues/135">openshift/cluster-cloud-controller-manager-operator #135</a></li>
+</ul>
+<h3 id="openshiftcluster-cloud-controller-manager-operator">openshift/cluster-cloud-controller-manager-operator</h3>
+<p>OpenShift uses the <a href="https://github.com/openshift/cluster-cloud-controller-manager-operator">Cluster Cloud Controller Manager Operator</a>(CCCMO)
+to manage the deployment and maintenance of the CCMs. This operator will deploy
+the individual containers of the CCM and ensure their health and continued
+operation during the cluster lifecycle.</p>
+<p>Adding a new infrastructure provider will require creating a package within the
+CCCMO that will contain the code for deploying the new components as well as the
+templated manifests for them. For a deeper discussion of integrating with the
+CCCMO, please see the
+<a href="https://github.com/openshift/cluster-cloud-controller-manager-operator/blob/master/docs/dev/cloud-provider-integration.md">developer documenation</a>
+from that repository.</p>
+<p>As an example, here are two pull requests that added the IBM Cloud CCM to the
+CCCMO. The first pull request adds the primary code changes and manifests for deployment.
+The second pull request adds the CCM image references for the CCCMO to utilize
+when deploying from an OpenShift release payload.</p>
+<ul>
+<li><a href="https://github.com/openshift/cluster-cloud-controller-manager-operator/pull/97">openshift/cluster-cloud-controller-manager-operator #97</a></li>
+<li><a href="https://github.com/openshift/cluster-cloud-controller-manager-operator/pull/105">openshift/cluster-cloud-controller-manager-operator #105</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../container-storage-interface-driver/" class="btn btn-neutral float-right" title="Container Storage Interface Driver">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../installer/" class="btn btn-neutral" title="Installer"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../installer/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../container-storage-interface-driver/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

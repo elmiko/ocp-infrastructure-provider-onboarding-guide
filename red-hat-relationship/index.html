@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Red Hat Relationship - OpenShift Infrastructure Provider Onboarding Guide</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Red Hat Relationship";
+    var mkdocs_page_input_path = "red-hat-relationship/index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> OpenShift Infrastructure Provider Onboarding Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview/">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../preparation/">Preparation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../information-gathering/">Information Gathering</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../openshift-enhancement/">OpenShift Enhancement</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rhcos/">RHCOS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installer/">Installer</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cloud-controller-manager/">Cloud Controller Manager</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../container-storage-interface-driver/">Container Storage Interface Driver</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../machine-api-controllers/">Machine API Controllers</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../network-ingress-dns/">Network Ingress and DNS</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../continuous-integration-and-testing/">Continuous Integration</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../component-infrastructure/">Component Infrastructure</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Red Hat Relationship</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#open-source">Open source</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bugzilla">Bugzilla</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#bugzilla-workflow">Bugzilla workflow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reporting-an-openshift-bug">Reporting an OpenShift bug</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#new-components-in-bugzilla">New components in Bugzilla</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release/">Release</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">OpenShift Infrastructure Provider Onboarding Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Red Hat Relationship</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="red-hat-relationship">Red Hat Relationship</h1>
+<p>Landing code in the OpenShift release is just one part of the integration
+journey. Once the initial work of integrating a new infrastructure platform
+is complete, there is extended task of maintainance and feature improvement.</p>
+<p>Depending on the depth of the partner agreement with Red Hat, it is
+reasonable to expect that there will be continuing work in the form of bug
+fixes and continued maintenance. In some cases, due to timing, it is possible
+that the initial work which lands in the release payload will need further
+engineering to reach the expected feature parity.</p>
+<h2 id="open-source">Open source</h2>
+<p>All components that are released by Red Hat are built using <a href="https://www.redhat.com/en/topics/open-source/what-is-open-source">open source</a>
+development practices. As such, the components that are included in
+OpenShift Container Platform releases will have their source code stored in
+a publicly accessible location (usually the
+<a href="https://github.com/openshift">OpenShift GitHub organization</a>).</p>
+<p>The open source development model encourages collaboration from the community
+of users who operate and utilize the software. This means that bugs can be
+reported by anyone, and likewise solutions can also be proposed by anyone in
+the community.</p>
+<p>The components that you build for OpenShift will be released as open source
+software. Once they are released, you have the opportunity to create fixes
+collaboratively and transparently with the community. This is a core principle
+to the continuing relationship with Red Hat and the wider user community.</p>
+<h2 id="bugzilla">Bugzilla</h2>
+<p>Red Hat uses <a href="https://bugzilla.redhat.com">Bugzilla</a> as the primary point of interaction for
+reporting and tracking defects. Red Hat is also in the process if mirroring
+bugs from Bugzilla into a public <a href="https://issues.redhat.com">Jira</a> instance as well. In the
+future, Jira may become the primary interface, but for today you will need
+to use Bugzilla.</p>
+<h3 id="bugzilla-workflow">Bugzilla workflow</h3>
+<p>Bugs within Red Hat's bugzilla contain a state that indicates their current
+status. In general these states should flow from top to the bottom of the
+list following this paragraph. Engineers should never move bugs further down
+than MODIFIED state.</p>
+<p><strong>Bug States</strong></p>
+<ul>
+<li>
+<p>NEW - only bugzillas with insufficient information (no reproducer, missing
+  information from customer) and bugzillas where it is not sure who will take
+  care of them (more people involved on the component) should be in this state.</p>
+</li>
+<li>
+<p>ASSIGNED - the most common bugzilla status, someone is assigned to the
+  bugzilla and has enough information to further investigate and resolve the issue.</p>
+</li>
+<li>
+<p>POST - a patch or solution believed to resolve this matter has been proposed
+  (POSTed) for inclusion to the appropriate git repo.</p>
+</li>
+<li>
+<p>MODIFIED - fix is in git, but was not tested yet and not released for users.
+  The appropriate code repo has been MODIFIED with the fix. (This is the last
+  state engineers should use.) If your PR properly linked to the BZ this should
+  happen automatically.</p>
+</li>
+<li>
+<p>ON_QA - QA is looking at the fix. If it fails QA they will move it back to
+  ASSIGNED. The 'automated release' team is responsible to move bugs from
+  MODIFIED to ON_QA when the fix is available in a nightly build for testing.</p>
+</li>
+<li>
+<p>VERIFIED - QA tested the bugzilla and the bug seems to be fixed.</p>
+</li>
+<li>
+<p>RELEASE_PENDING - An errata was fully tested and the bug will get closed
+  automatically once the images are publicly available.</p>
+</li>
+<li>
+<p>CLOSED - bugzilla is resolved, no further actions are needed (refer to
+  <a href="https://bugzilla.redhat.com/page.cgi?id=fields.html#status">bugzilla statuses</a> for all variants of CLOSED).</p>
+</li>
+</ul>
+<h3 id="reporting-an-openshift-bug">Reporting an OpenShift bug</h3>
+<p>To report a new OpenShift bug, navigate to the <a href="https://bugzilla.redhat.com">Bugzilla</a> webpage
+and file the bug by selecting "New", then "Red Hat", then "OpenShift
+Container Platform". The following link is a shortcut to create a new bug for
+the OpenShift Container Platform:</p>
+<p><a href="https://bugzilla.redhat.com/enter_bug.cgi?product=OpenShift%20Container%20Platform">New Bug for OpenShift Container Platform</a></p>
+<p>There are several fields to note when creating a new bug. The next few images
+will highlight the fields you need to fill.</p>
+<p><img alt="bugzilla fields 1" src="bugzilla1.svg" />
+<img alt="bugzilla fields 2" src="bugzilla2.svg" /></p>
+<p><strong>Bugzilla Field Descriptions</strong></p>
+<ol>
+<li>
+<p>Component is the OpenShift component to which the bug is being reported, for
+  example Installer, or Cloud Compute. Choose the component which best fits
+  the bug. Do not worry if you don't see an exact match for your component,
+  choose the closest match and then during triage the bug will be re-assigned
+  if necessary. If you know the GitHub repository of the component you are
+  creating a bug against, you can look in the <code>OWNERS</code> file in the root of the
+  repository to see the component information.</p>
+</li>
+<li>
+<p>Version is the OpenShift version against which this bug is being reported.
+  By default this field will contain the version that is being released next.
+  If reporting a bug to a previously released version of OpenShift, select that
+  version.</p>
+</li>
+<li>
+<p>Target Release is the OpenShift version for which a solution is being
+  proposed. This is used by Red Hat to indicate when engineering intends to
+  fix a bug. It does not need to be set when creating a new bug.</p>
+</li>
+<li>
+<p>Severity is the impact that this bug has on OpenShift. You should set this
+  field based on the nature of the bug as follows:</p>
+<ul>
+<li>Urgent - Causing a breakage/outage/unrecoverable issue.</li>
+<li>High - Blocking functionality from succeeding.</li>
+<li>Medium - Impacts functionality but critical operations remain functional
+  or occurs under specific circumstances.</li>
+<li>Low - Everything else.</li>
+</ul>
+</li>
+<li>
+<p>Priority is set by Red Hat as a guideline for how the bug should be
+  evaluated and planned. Priority should not be adjusted by anyone other than
+  Red Hat component team members.</p>
+</li>
+<li>
+<p>Summary is a concise description of the bug. This is most frequently what
+  users will see when searching for issues, so it should contain some high
+  level identification of underlying problem.</p>
+</li>
+<li>
+<p>Description is where the bug will be described in greater detail. The
+  template text in this field will guide you in creating content for the bug.</p>
+</li>
+</ol>
+<h3 id="new-components-in-bugzilla">New components in Bugzilla</h3>
+<p>When adding new components to OpenShift, for example a new cloud controller
+manager, the new component will need to be added to Bugzilla by Red Hat team
+members. After you have completed the process of adding your repository to
+the OpenShift organization on GitHub and have created the necessary Prow
+configuration files in the OpenShift Release repository, your component should
+be added to Bugzilla. If you have completed these steps and do not see your
+component in Bugzilla, please reach out to your Red Hat contacts.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../release/" class="btn btn-neutral float-right" title="Release">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../documentation/" class="btn btn-neutral" title="Documentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../documentation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../release/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
